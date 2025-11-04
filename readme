@@ -1,0 +1,63 @@
+Problem Description
+Difficulty: Easy
+Topics: Two Pointers, String, Dynamic Programming
+Companies: Amazon, Google, Facebook, Bloomberg, Microsoft
+
+Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+
+A subsequence of a string is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters.Constraints:
+0 <= s.length <= 100
+
+0 <= t.length <= 10^4
+
+s and t consist only of lowercase English letters.
+
+Follow up
+Suppose there are lots of incoming s, say s1, s2, ..., sk where k >= 10^9, and you want to check one by one to see if t has its subsequence. In this scenario, how would you change your code?
+EXAMPLE
+Input: s = "abc", t = "ahbgdc"
+Output: true
+
+Input: s = "axc", t = "ahbgdc"
+Output: false
+
+Input: s = "", t = "ahbgdc"
+Output: true  // Empty string is subsequence of any string
+Complexity Analysis
+Two Pointers Solution
+Time Complexity: O(m + n) where m = s.length(), n = t.length()
+
+Space Complexity: O(1)
+
+Follow-up Solution
+Preprocessing Time: O(n) for building character position map
+
+Query Time: O(m log k) per query where k is average frequency
+
+Space Complexity: O(n) for storing character positions
+Algorithm Explanation
+Two Pointers Approach
+Initialize two pointers i for s and j for t
+
+Traverse both strings:
+
+If characters match, move both pointers forward
+
+If not, move only t pointer forward
+
+If we reach end of s, it's a subsequence
+
+Follow-up Approach
+Preprocessing: Create a map from each character to its sorted positions in t
+
+Query Processing: For each character in s, use binary search to find the earliest occurrence after the current position
+Key Insights
+Greedy Approach: Always match the earliest possible occurrence in t
+
+Order Preservation: Characters must appear in the same relative order
+
+Efficient Multiple Queries: Preprocessing enables O(log n) per character lookup
+
+Binary Search: upper_bound finds the first position greater than current position
+
+
